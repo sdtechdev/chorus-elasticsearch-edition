@@ -127,10 +127,10 @@ curl -u 'elastic:ElasticRocks' -X POST "localhost:9200/_security/role/anonymous_
 echo -e "${MAJOR}Creating ecommerce index, defining its mapping & settings\n${RESET}"
 curl -u 'elastic:ElasticRocks' -s -X PUT "localhost:9200/ecommerce/" -H 'Content-Type: application/json' --data-binary @./elasticsearch/schema.json
 
-if [ ! -f ./icecat-products-w_price-19k-20201127.tar.gz ]; then
-    echo -e "${MAJOR}Downloading the sample product data\n${RESET}"
-    wget https://querqy.org/datasets/icecat/icecat-products-w_price-19k-20201127.tar.gz
-fi
+# if [ ! -f ./icecat-products-w_price-19k-20201127.tar.gz ]; then
+#     echo -e "${MAJOR}Downloading the sample product data\n${RESET}"
+#     wget https://querqy.org/datasets/icecat/icecat-products-w_price-19k-20201127.tar.gz
+# fi
 
 if [ ! -f ./icecat-products-w_price-19k-20201127.json ]; then
     echo -e "${MAJOR}Unpacking the sample product data, please give it a few minutes!\n${RESET}"

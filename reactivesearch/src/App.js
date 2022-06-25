@@ -38,7 +38,7 @@ class App extends Component {
             componentId="algopicker" />
           <MultiList
             componentId="brandfilter"
-            dataField="supplier"
+            dataField="brand"
             title="Filter by Brands"
             size={20}
             showSearch={false}
@@ -49,8 +49,8 @@ class App extends Component {
           />
           <MultiList
             componentId="typefilter"
-            dataField="filter_product_type"
-            title="Filter by Product Types"
+            dataField="category"
+            title="Filter by Product Category"
             size={20}
             showSearch={false}
             react={{
@@ -65,9 +65,9 @@ class App extends Component {
               marginTop: "35px"
             }}
             componentId="searchbox"
-            placeholder="Search for products, brands or EAN"
+            placeholder="Search for products, brands"
             autosuggest={false}
-            dataField={["id", "name", "title", "product_type" , "short_description", "ean", "search_attributes"]}
+            dataField={["id", "name", "catalog_number", "brand"]}
             customQuery={
               function(value) {
                 var elem = document.getElementById('algopicker');
@@ -80,7 +80,7 @@ class App extends Component {
                     query: {
                       multi_match: {
                         query: value,
-                        fields: [ "id", "name", "title", "product_type" , "short_description", "ean", "search_attributes"]
+                        fields: [ "_id", "name", "catalog_number", "brand"]
                       }
                     }
                   }
@@ -128,18 +128,16 @@ class App extends Component {
                     <ResultCard.Image
                       style={{
                         backgroundSize: "cover",
-                        backgroundImage: `url(${item.img_500x500})`
+                        backgroundImage: `url(${item.default_composition.image_url})`
                       }}
                     />
                     <ResultCard.Title
                       dangerouslySetInnerHTML={{
-                        __html: item.title
+                        __html: item.catalog_number
                       }}
                     />
                     <ResultCard.Description>
-                      {item.price/100 +
-                        " $ | " +
-                        item.supplier}
+                      {item.price['0'] +"$"}
                     </ResultCard.Description>
                   </ResultCard>
                 ))}
