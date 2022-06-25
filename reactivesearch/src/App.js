@@ -38,7 +38,7 @@ class App extends Component {
             componentId="algopicker" />
           <MultiList
             componentId="brandfilter"
-            dataField="supplier"
+            dataField="brand"
             title="Filter by Brands"
             size={20}
             showSearch={false}
@@ -49,8 +49,8 @@ class App extends Component {
           />
           <MultiList
             componentId="typefilter"
-            dataField="filter_product_type"
-            title="Filter by Product Types"
+            dataField="category"
+            title="Filter by Product Category"
             size={20}
             showSearch={false}
             react={{
